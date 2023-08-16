@@ -6,13 +6,16 @@ function CartContextProvider({children}) {
     const [allPhotos, setAllPhotos] = useState([])
     
     const url = "https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json"
-    useEffect(() => {
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setAllPhotos(data))
-    }, [])
 
-    console.log(allPhotos)
+    const getFetchedPhotos = async () => {
+        let res = await fetch (url)
+        let data = await res.json()
+        setAllPhotos(data)
+    }
+
+    useEffect(() => {
+        getFetchedPhotos()
+    }, [])
     
     return (
         <CartContext.Provider value={{allPhotos}}>

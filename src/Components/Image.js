@@ -6,7 +6,7 @@ function Image({className, img}) {
     return (
         <ImageStyled>
             <div className={`${className} image-container`}>
-                <img src={img.url} className='image-grid'/>
+                <img src={img.url} className='image-grid' alt='image'/>
             </div>
         </ImageStyled>
     )
